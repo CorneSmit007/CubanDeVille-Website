@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#050507">
+
+  <title>Cuban DeVille — Official World | Music, Visuals &amp; Private Access</title>
+  <meta name="description" content="Enter the official world of Cuban DeVille — music, visuals, social channels, private access, bookings and every official link in one place.">
+  <meta name="author" content="Cuban DeVille">
+  <link rel="canonical" href="https://cubandeville.com/">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preload" as="image" href="assets/images/wordmark-white.png">
+  <link rel="preload" as="image" href="assets/images/badge-white.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Cuban DeVille — Official World">
+  <meta property="og:description" content="Music, visuals, private access and every official Cuban DeVille link in one place.">
+  <meta property="og:url" content="https://cubandeville.com/">
+  <meta property="og:image" content="https://cubandeville.com/assets/images/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Cuban DeVille">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cuban DeVille — Official World">
+  <meta name="twitter:description" content="Music, visuals, private access and every official Cuban DeVille link in one place.">
+  <meta name="twitter:image" content="https://cubandeville.com/assets/images/og-cover.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;500;600&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <script>
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "Cuban DeVille",
+    "url": "https://cubandeville.com/",
+    "image": "https://cubandeville.com/assets/images/og-cover.jpg",
+    "genre": "Hip-Hop/Rap",
+    "sameAs": [
+      "https://open.spotify.com/artist/6oTMQhViChy06Mf5vsYTk0",
+      "https://music.apple.com/za/artist/cuban-deville/1766002179",
+      "https://www.youtube.com/@cubandeville",
+      "https://www.instagram.com/cubandeville/",
+      "https://www.tiktok.com/@cubandeville",
+      "https://x.com/cubandeville"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="boot" id="boot" aria-hidden="true">
+    <div class="boot__inner">
+      <img src="assets/images/badge-white.png" alt="" class="boot__mark">
+      <div class="boot__label">INITIALISING WORLD 01</div>
+      <div class="boot__track"><span></span></div>
+    </div>
+  </div>
+
+  <canvas class="world-canvas" id="worldCanvas" aria-hidden="true"></canvas>
+  <div class="ambient" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor-aura" id="cursorAura" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="nav-shell">
+      <a class="brand" href="#world" aria-label="Cuban DeVille home">
+        <img src="assets/images/wordmark-white.png" alt="Cuban DeVille" width="300" height="160">
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#explore" data-nav>World</a>
+        <a href="#music" data-nav>Music</a>
+        <a href="#content" data-nav>Content</a>
+        <a href="#story" data-nav>Story</a>
+      </nav>
+
+      <div class="nav-actions">
+        <span class="nav-status"><i></i>Cape Town / Online</span>
+        <button class="button button--small button--light" type="button" data-open-listen>
+          Listen
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </button>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu__top">
+      <span>WORLD DIRECTORY</span>
+      <span>01 / 06</span>
+    </div>
+    <nav aria-label="Mobile navigation">
+      <a href="#world" data-mobile-nav><span>01</span>Home</a>
+      <a href="#explore" data-mobile-nav><span>02</span>Explore</a>
+      <a href="#music" data-mobile-nav><span>03</span>Music</a>
+      <a href="#content" data-mobile-nav><span>04</span>Content</a>
+      <a href="#vault" data-mobile-nav><span>05</span>The Vault</a>
+      <a href="#story" data-mobile-nav><span>06</span>Story</a>
+    </nav>
+    <div class="mobile-menu__socials">
+      <a href="https://www.instagram.com/cubandeville/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.tiktok.com/@cubandeville" target="_blank" rel="noopener noreferrer">TikTok</a>
+      <a href="https://www.youtube.com/@cubandeville" target="_blank" rel="noopener noreferrer">YouTube</a>
+    </div>
+  </div>
+
+  <aside class="world-rail" aria-label="Page sections">
+    <a href="#world" class="active" aria-current="location"><span>01</span><b>World</b></a>
+    <a href="#explore"><span>02</span><b>Explore</b></a>
+    <a href="#music"><span>03</span><b>Music</b></a>
+    <a href="#content"><span>04</span><b>Content</b></a>
+    <a href="#vault"><span>05</span><b>Vault</b></a>
+    <a href="#story"><span>06</span><b>Story</b></a>
+  </aside>
+
+  <main id="main">
+    <section class="hero section-dark" id="world" data-section="World">
+      <div class="hero__grid container">
+        <div class="hero__copy">
+          <div class="eyebrow reveal">
+            <span class="pulse-dot"></span>
+            Latest transmission
+            <a href="https://music.apple.com/za/album/brazil-single/1892368965" target="_blank" rel="noopener noreferrer">BRAZIL / 09.04.26</a>
+          </div>
+
+          <h1 class="sr-only">Cuban DeVille — Official Artist World</h1>
+          <img class="hero__wordmark reveal" src="assets/images/wordmark-white.png" alt="Cuban DeVille" width="1024" height="1024">
+
+          <p class="hero__statement reveal">One artist. Every signal. One world.</p>
+          <p class="hero__lead reveal">Music, visuals, private drops and everything Cuban DeVille builds — collected into one living digital universe.</p>
+
+          <div class="hero__actions reveal">
+            <button class="button button--light magnetic" type="button" data-open-listen>
+              Enter the music
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+            </button>
+            <a class="button button--ghost magnetic" href="#explore">
+              Explore the world
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v13M6 12l6 6 6-6"/></svg>
+            </a>
+          </div>
+
+          <div class="hero__micro reveal">
+            <span>Artist / Founder / Worldbuilder</span>
+            <span>Cape Town, South Africa</span>
+          </div>
+        </div>
+
+        <div class="hero__visual reveal" aria-label="Interactive Cuban DeVille world">
+          <div class="world-stage" id="worldStage">
+            <div class="world-stage__grid"></div>
+            <div class="world-stage__halo"></div>
+
+            <div class="orbit orbit--outer" aria-hidden="true"><span></span></div>
+            <div class="orbit orbit--mid" aria-hidden="true"><span></span></div>
+            <div class="orbit orbit--inner" aria-hidden="true"><span></span></div>
+
+            <div class="world-core">
+              <div class="world-core__sphere"></div>
+              <div class="world-core__logo" aria-hidden="true"></div>
+              <img src="assets/images/badge-white.png" alt="Cuban DeVille emblem" class="world-core__fallback">
+            </div>
+
+            <a class="orbit-node orbit-node--spotify" href="https://open.spotify.com/artist/6oTMQhViChy06Mf5vsYTk0" target="_blank" rel="noopener noreferrer" aria-label="Listen to Cuban DeVille on Spotify">
+              <span>SP</span><b>Spotify</b>
+            </a>
+            <a class="orbit-node orbit-node--youtube" href="https://www.youtube.com/@cubandeville" target="_blank" rel="noopener noreferrer" aria-label="Watch Cuban DeVille on YouTube">
+              <span>YT</span><b>YouTube</b>
+            </a>
+            <a class="orbit-node orbit-node--instagram" href="https://www.instagram.com/cubandeville/" target="_blank" rel="noopener noreferrer" aria-label="Follow Cuban DeVille on Instagram">
+              <span>IG</span><b>Instagram</b>
+            </a>
+
+            <div class="world-stage__coordinate world-stage__coordinate--a">33.9249° S</div>
+            <div class="world-stage__coordinate world-stage__coordinate--b">18.4241° E</div>
+            <div class="world-stage__coordinate world-stage__coordinate--c">WORLD 01 / LIVE</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__footer container">
+        <div class="scroll-cue"><span></span>Scroll to move through the world</div>
+        <div class="hero__index">001 — OFFICIAL HUB</div>
+      </div>
+    </section>
+
+    <div class="signal-strip" aria-hidden="true">
+      <div class="signal-strip__track">
+        <span>BRAZIL</span><i>✦</i><span>PUT ME IN VOGUE</span><i>✦</i><span>CARBONE</span><i>✦</i><span>SPEED RACER</span><i>✦</i><span>USED TO THIS</span><i>✦</i><span>CUBAN DEVILLE</span><i>✦</i>
+        <span>BRAZIL</span><i>✦</i><span>PUT ME IN VOGUE</span><i>✦</i><span>CARBONE</span><i>✦</i><span>SPEED RACER</span><i>✦</i><span>USED TO THIS</span><i>✦</i><span>CUBAN DEVILLE</span><i>✦</i>
+      </div>
+    </div>
+
+    <section class="portal-section section-dark" id="explore" data-section="Explore">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <span class="section-kicker">World directory / 02</span>
+            <h2>Choose a portal.</h2>
+          </div>
+          <p>This is the fastest route to every official Cuban DeVille destination — redesigned as a world worth exploring, not a list of links.</p>
+        </div>
+
+        <div class="portal-grid">
+          <article class="portal-card portal-card--music tilt-card reveal">
+            <div class="portal-card__noise"></div>
+            <div class="portal-card__top">
+              <span>01 / LISTEN</span>
+              <button type="button" class="round-arrow" data-open-listen aria-label="Open music platforms">
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+            <div class="portal-card__body">
+              <div class="portal-card__title">Music</div>
+              <p>Spotify, Apple Music, SoundCloud and the full catalogue.</p>
+              <div class="waveform" aria-hidden="true">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+            </div>
+          </article>
+
+          <a class="portal-card portal-card--watch tilt-card reveal" href="https://www.youtube.com/@cubandeville" target="_blank" rel="noopener noreferrer">
+            <div class="portal-card__top"><span>02 / WATCH</span><span class="round-arrow"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+            <div class="portal-card__body">
+              <div class="portal-glyph">▶</div>
+              <div class="portal-card__title">YouTube</div>
+              <p>Music videos, visualisers and the moving world.</p>
+            </div>
+          </a>
+
+          <a class="portal-card portal-card--social tilt-card reveal" href="https://www.instagram.com/cubandeville/" target="_blank" rel="noopener noreferrer">
+            <div class="portal-card__top"><span>03 / FOLLOW</span><span class="round-arrow"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+            <div class="portal-card__body">
+              <div class="portal-stack" aria-hidden="true"><span>IG</span><span>TT</span><span>X</span></div>
+              <div class="portal-card__title">Social</div>
+              <p>Visual identity, studio fragments and the daily evolution.</p>
+            </div>
+          </a>
+
+          <a class="portal-card portal-card--vault tilt-card reveal" href="#vault">
+            <div class="portal-card__top"><span>04 / PRIVATE</span><span class="round-arrow"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+            <div class="portal-card__body">
+              <div class="vault-seal" aria-hidden="true"><img src="assets/images/badge-white.png" alt=""></div>
+              <div class="portal-card__title">The Vault</div>
+              <p>First listens, private notes and drops before the public feed.</p>
+            </div>
+          </a>
+
+          <a class="portal-card portal-card--story tilt-card reveal" href="#story">
+            <div class="portal-card__top"><span>05 / ORIGIN</span><span class="round-arrow"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+            <div class="portal-card__body">
+              <div class="portal-year">2017—26</div>
+              <div class="portal-card__title">The Story</div>
+              <p>From the first beat to a one-of-one artist universe.</p>
+            </div>
+          </a>
+
+          <a class="portal-card portal-card--contact tilt-card reveal" href="mailto:bookings@cubandeville.com">
+            <div class="portal-card__top"><span>06 / CONNECT</span><span class="round-arrow"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+            <div class="portal-card__body">
+              <div class="portal-card__title">Bookings</div>
+              <p>Features, performances, brand work and serious collaborations.</p>
+              <span class="portal-email">bookings@cubandeville.com</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="release-section section-light" id="music" data-section="Music">
+      <div class="container">
+        <div class="section-heading section-heading--light reveal">
+          <div>
+            <span class="section-kicker">Current signal / 03</span>
+            <h2>The music is the centre.</h2>
+          </div>
+          <p>Everything else exists to give the music a bigger world to live inside.</p>
+        </div>
+
+        <div class="release-grid">
+          <div class="release-art reveal tilt-card" aria-label="BRAZIL by Cuban DeVille">
+            <div class="release-art__grid"></div>
+            <div class="release-art__sun"></div>
+            <div class="release-art__badge"><img src="assets/images/badge-white.png" alt=""></div>
+            <div class="release-art__meta"><span>CUBAN DEVILLE</span><span>2026 / 001</span></div>
+            <div class="release-art__title">BRAZIL</div>
+          </div>
+
+          <div class="release-copy reveal">
+            <span class="release-label">Latest release</span>
+            <h3>BRAZIL</h3>
+            <div class="release-facts">
+              <span>Single</span><i></i><span>09 April 2026</span><i></i><span>Hip-Hop / Rap</span>
+            </div>
+            <p>A direct route into the current Cuban DeVille era. Start here, then move through the catalogue.</p>
+
+            <div class="release-actions">
+              <a class="button button--dark magnetic" href="https://music.apple.com/za/album/brazil-single/1892368965" target="_blank" rel="noopener noreferrer">
+                Play on Apple Music
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+              </a>
+              <a class="button button--outline-dark magnetic" href="https://open.spotify.com/artist/6oTMQhViChy06Mf5vsYTk0" target="_blank" rel="noopener noreferrer">
+                Open Spotify
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+
+            <div class="recent-list">
+              <span>Recent transmissions</span>
+              <div>
+                <a href="https://music.apple.com/za/artist/cuban-deville/1766002179" target="_blank" rel="noopener noreferrer">USED TO THIS</a>
+                <a href="https://music.apple.com/za/artist/cuban-deville/1766002179" target="_blank" rel="noopener noreferrer">CARBONE</a>
+                <a href="https://music.apple.com/za/artist/cuban-deville/1766002179" target="_blank" rel="noopener noreferrer">SPEED RACER</a>
+                <a href="https://music.apple.com/za/album/put-me-in-vogue-ep/1877299800" target="_blank" rel="noopener noreferrer">PUT ME IN VOGUE</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="platform-row reveal" aria-label="Music platforms">
+          <a href="https://open.spotify.com/artist/6oTMQhViChy06Mf5vsYTk0" target="_blank" rel="noopener noreferrer"><span>SP</span><b>Spotify</b><i>Open ↗</i></a>
+          <a href="https://music.apple.com/za/artist/cuban-deville/1766002179" target="_blank" rel="noopener noreferrer"><span>AM</span><b>Apple Music</b><i>Open ↗</i></a>
+          <a href="https://on.soundcloud.com/gpjsqQSchwt19ZXSVI" target="_blank" rel="noopener noreferrer"><span>SC</span><b>SoundCloud</b><i>Open ↗</i></a>
+          <a href="https://www.youtube.com/@cubandeville" target="_blank" rel="noopener noreferrer"><span>YT</span><b>YouTube Music</b><i>Open ↗</i></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section section-dark" id="content" data-section="Content">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <span class="section-kicker">Moving image / 04</span>
+            <h2>Watch the world take shape.</h2>
+          </div>
+          <p>The songs are one layer. The visuals, process and personality make the universe feel alive.</p>
+        </div>
+
+        <div class="content-grid">
+          <a class="content-card content-card--youtube reveal tilt-card" href="https://www.youtube.com/@cubandeville" target="_blank" rel="noopener noreferrer">
+            <div class="content-card__screen">
+              <div class="content-card__scan"></div>
+              <img src="assets/images/badge-white.png" alt="" class="content-card__mark">
+              <span class="content-card__play">▶</span>
+              <div class="content-card__hud"><span>REC</span><span>4K / WORLD 01</span></div>
+            </div>
+            <div class="content-card__copy"><span>YouTube</span><h3>Music videos &amp; visualisers.</h3><b>Watch channel ↗</b></div>
+          </a>
+
+          <a class="content-card content-card--instagram reveal tilt-card" href="https://www.instagram.com/cubandeville/" target="_blank" rel="noopener noreferrer">
+            <div class="content-card__screen content-card__screen--portrait">
+              <div class="story-bars"><i></i><i></i><i></i></div>
+              <img src="assets/images/wordmark-white.png" alt="" class="content-card__wordmark">
+              <div class="content-card__hud"><span>@CUBANDEVILLE</span><span>LIVE FEED</span></div>
+            </div>
+            <div class="content-card__copy"><span>Instagram</span><h3>Visual identity &amp; daily evolution.</h3><b>Follow the feed ↗</b></div>
+          </a>
+
+          <a class="content-card content-card--tiktok reveal tilt-card" href="https://www.tiktok.com/@cubandeville" target="_blank" rel="noopener noreferrer">
+            <div class="content-card__screen content-card__screen--portrait content-card__screen--signal">
+              <div class="signal-rings"><i></i><i></i><i></i></div>
+              <span class="content-card__monogram">CDV</span>
+              <div class="content-card__hud"><span>SHORT FORM</span><span>NEW SIGNALS</span></div>
+            </div>
+            <div class="content-card__copy"><span>TikTok</span><h3>Clips, previews &amp; process.</h3><b>Enter the loop ↗</b></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="vault-section section-dark" id="vault" data-section="Vault">
+      <div class="container vault-shell reveal">
+        <div class="vault-visual" aria-hidden="true">
+          <div class="vault-door">
+            <div class="vault-door__ring vault-door__ring--1"></div>
+            <div class="vault-door__ring vault-door__ring--2"></div>
+            <div class="vault-door__ring vault-door__ring--3"></div>
+            <img src="assets/images/badge-white.png" alt="">
+          </div>
+          <div class="vault-code">PRIVATE CHANNEL / ACCESS BY EMAIL</div>
+        </div>
+
+        <div class="vault-copy">
+          <span class="section-kicker">Private channel / 05</span>
+          <h2>The public feed is only the surface.</h2>
+          <p>The Vault is the inner circle: unreleased first listens, private notes, early links and drops before they reach everyone else.</p>
+
+          <div class="vault-benefits">
+            <span>First listens</span><span>Private drops</span><span>Studio notes</span>
+          </div>
+
+          <form class="vault-form" id="vaultForm" novalidate>
+            <label for="vaultEmail">Email address</label>
+            <div class="vault-form__row">
+              <input id="vaultEmail" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required>
+              <input class="hp-field" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <button class="button button--light" type="submit">
+                Request a world key
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+            <p class="form-note">By joining, you agree to receive Cuban DeVille updates. Unsubscribe at any time.</p>
+            <div class="form-message" id="vaultMessage" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-section section-light" id="story" data-section="Story">
+      <div class="container">
+        <div class="story-intro">
+          <div class="story-intro__title reveal">
+            <span class="section-kicker">Origin file / 06</span>
+            <h2>Creator first.<br>Builder by instinct.<br><em>Worldbuilder by ambition.</em></h2>
+          </div>
+          <div class="story-intro__copy reveal">
+            <p><strong>Cuban DeVille</strong> is a Cape Town artist working across music, visual identity, technology and business as one continuous creative practice.</p>
+            <p>The name arrived after a complete reset: a sharper identity built around rarity, high value, vintage luxury and the refusal to make anything generic.</p>
+            <p>The long-term mission is simple: create one-of-one work that moves people, then build the systems that allow it to reach more lives.</p>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item reveal"><span>2017</span><h3>First beats.</h3><p>The beginning: learning production, music theory and how to turn an idea into a world.</p></article>
+          <article class="timeline-item reveal"><span>2023</span><h3>Art Saves Hearts.</h3><p>The debut album under the earlier identity — followed by the decision to step back and rebuild.</p></article>
+          <article class="timeline-item reveal"><span>2024</span><h3>The reset.</h3><p>A physical, financial and creative rebuild. The old identity was retired because it no longer matched the ambition.</p></article>
+          <article class="timeline-item reveal"><span>2025</span><h3>Cuban DeVille is born.</h3><p>A new name, a new visual language and the start of the 21 and CORNELIUS era.</p></article>
+          <article class="timeline-item reveal"><span>2026</span><h3>The world opens.</h3><p>PUT ME IN VOGUE, SPEED RACER, CARBONE, USED TO THIS and BRAZIL expand the current sound.</p></article>
+        </div>
+
+        <div class="other-world reveal">
+          <div>
+            <span>Beyond the music</span>
+            <h3>Building companies and systems is part of the same story.</h3>
+          </div>
+          <a class="button button--outline-dark" href="https://www.cloudinsure.co.za/" target="_blank" rel="noopener noreferrer">
+            Visit Cloud Insure
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="finale section-dark" id="contact" data-section="Contact">
+      <div class="container finale__inner reveal">
+        <img src="assets/images/duo-white.png" alt="Cuban DeVille" class="finale__logo">
+        <p>For bookings, features, performances, brand collaborations and serious ideas.</p>
+        <a class="finale__email magnetic" href="mailto:bookings@cubandeville.com">bookings@cubandeville.com</a>
+        <div class="finale__actions">
+          <button class="button button--light" type="button" data-open-listen>Listen everywhere</button>
+          <a class="button button--ghost" href="https://www.instagram.com/cubandeville/" target="_blank" rel="noopener noreferrer">Follow the world</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__grid">
+      <div class="site-footer__brand">
+        <img src="assets/images/wordmark-white.png" alt="Cuban DeVille">
+        <span>Build the artist. Build the company. Build the world.</span>
+      </div>
+      <div class="site-footer__links">
+        <div><span>Listen</span><a href="https://open.spotify.com/artist/6oTMQhViChy06Mf5vsYTk0" target="_blank" rel="noopener noreferrer">Spotify</a><a href="https://music.apple.com/za/artist/cuban-deville/1766002179" target="_blank" rel="noopener noreferrer">Apple Music</a><a href="https://on.soundcloud.com/gpjsqQSchwt19ZXSVI" target="_blank" rel="noopener noreferrer">SoundCloud</a></div>
+        <div><span>Watch</span><a href="https://www.youtube.com/@cubandeville" target="_blank" rel="noopener noreferrer">YouTube</a><a href="https://www.instagram.com/cubandeville/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.tiktok.com/@cubandeville" target="_blank" rel="noopener noreferrer">TikTok</a></div>
+        <div><span>More</span><a href="#vault">The Vault</a><a href="mailto:bookings@cubandeville.com">Bookings</a><a href="https://x.com/cubandeville" target="_blank" rel="noopener noreferrer">X</a></div>
+      </div>
+    </div>
+    <div class="container site-footer__bottom">
+      <span>© <span id="year"></span> Cuban DeVille. All rights reserved.</span>
+      <div><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+      <span>Cape Town → Worldwide</span>
+    </div>
+  </footer>
+
+  <nav class="mobile-dock" aria-label="Quick navigation">
+    <a href="#world" aria-label="Home"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9H4z"/></svg><span>Home</span></a>
+    <button type="button" data-open-listen aria-label="Listen"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 18a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm3-3V6l7-2v9"/></svg><span>Listen</span></button>
+    <a href="#vault" aria-label="Vault"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>Vault</span></a>
+    <a href="https://www.instagram.com/cubandeville/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1"/></svg><span>Follow</span></a>
+  </nav>
+
+  <div class="listen-modal" id="listenModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="listenModalTitle">
+    <div class="listen-modal__backdrop" data-close-listen></div>
+    <div class="listen-modal__panel" role="document">
+      <button class="listen-modal__close" type="button" data-close-listen aria-label="Close music menu"><span></span><span></span></button>
+      <div class="listen-modal__header">
+        <span>WORLD DIRECTORY / MUSIC</span>
+        <h2 id="listenModalTitle">Choose where to listen.</h2>
+        <p>Every official music destination, one click away.</p>
+      </div>
+      <div class="listen-modal__links">
+        <a href="https://open.spotify.com/artist/6oTMQhViChy06Mf5vsYTk0" target="_blank" rel="noopener noreferrer"><span>01</span><b>Spotify</b><i>Open ↗</i></a>
+        <a href="https://music.apple.com/za/artist/cuban-deville/1766002179" target="_blank" rel="noopener noreferrer"><span>02</span><b>Apple Music</b><i>Open ↗</i></a>
+        <a href="https://on.soundcloud.com/gpjsqQSchwt19ZXSVI" target="_blank" rel="noopener noreferrer"><span>03</span><b>SoundCloud</b><i>Open ↗</i></a>
+        <a href="https://www.youtube.com/@cubandeville" target="_blank" rel="noopener noreferrer"><span>04</span><b>YouTube</b><i>Open ↗</i></a>
+      </div>
+      <div class="listen-modal__footer">
+        <img src="assets/images/badge-white.png" alt="">
+        <span>Latest transmission: BRAZIL</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/world.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</body>
+</html>

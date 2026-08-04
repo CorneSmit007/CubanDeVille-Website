@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuban DeVille — Official Website | Music &amp; The Vault</title>
+<meta name="description" content="Cuban DeVille — Cape Town artist. New music, every platform in one place, and a private Vault of unreleased work.">
+<link rel="canonical" href="https://cubandeville.com/">
+<link rel="icon" href="assets/badge-black.jpg">
+<link rel="apple-touch-icon" href="assets/badge-black.jpg">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cuban DeVille — Official Website">
+<meta property="og:description" content="Cape Town artist. New music, every platform in one place, and a private Vault of unreleased work.">
+<meta property="og:url" content="https://cubandeville.com/">
+<meta property="og:image" content="https://cubandeville.com/assets/main-black.jpg">
+<meta property="og:site_name" content="Cuban DeVille">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cuban DeVille — Official Website">
+<meta name="twitter:description" content="Cape Town artist. New music, every platform in one place, and a private Vault of unreleased work.">
+<meta name="twitter:image" content="https://cubandeville.com/assets/main-black.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#000000;
+    --black-2:#0A0A0A;
+    --black-3:#141414;
+    --white:#F7F7F5;
+    --grey:#9A9A97;
+    --grey-dim:#565553;
+    --line:rgba(247,247,245,0.12);
+    --ease:cubic-bezier(.19,1,.22,1);
+    --serif:'Montserrat',sans-serif;
+    --sans:'Noto Sans',sans-serif;
+    --pad-x: max(clamp(20px, 5vw, 64px), calc(50% - 700px));
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--black);color:var(--white);font-family:var(--sans);font-weight:300;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--white);color:var(--black);}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  button{font-family:inherit;}
+
+  .grain{
+    position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:0.035;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .star{font-size:0.7em;vertical-align:0.05em;margin-right:10px;opacity:0.8;}
+
+  .progress{
+    position:fixed;top:0;left:0;height:2px;width:0;
+    background:linear-gradient(90deg, rgba(247,247,245,0.3), var(--white));
+    z-index:1000;box-shadow:0 0 16px rgba(247,247,245,0.4);
+  }
+
+  .cursor-glow{
+    position:fixed;width:340px;height:340px;border-radius:50%;pointer-events:none;z-index:1;
+    opacity:0.06;background:radial-gradient(circle, rgba(247,247,245,0.9), transparent 65%);
+    filter:blur(20px);transform:translate(-50%,-50%);mix-blend-mode:screen;
+  }
+  @media (max-width:860px), (hover:none){ .cursor-glow{display:none;} }
+
+  #constellation{position:absolute;inset:0;width:100%;height:100%;opacity:0.5;z-index:-1;}
+
+  /* ===== ENTRY ===== */
+  #entry{
+    position:fixed;inset:0;z-index:200;overflow:hidden;background:var(--black);
+    clip-path:circle(150% at 50% 50%);
+    transition:clip-path 1.2s cubic-bezier(.76,0,.24,1), opacity .5s ease .1s, visibility .5s ease .1s;
+  }
+  #entry.opening{clip-path:circle(0% at 50% 50%);}
+  #entry.hidden{opacity:0;visibility:hidden;pointer-events:none;}
+  .entry-content{
+    position:relative;z-index:2;height:100%;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    transition:opacity .4s ease, transform .4s ease;
+  }
+  #entry.unlocking .entry-content{opacity:0;transform:scale(0.96);}
+  .unlock-ring{
+    position:absolute;top:50%;left:50%;width:260px;height:260px;border-radius:50%;
+    border:1px solid rgba(247,247,245,0.5);transform:translate(-50%,-50%) scale(0.7);opacity:0;pointer-events:none;
+  }
+  #entry.unlocking .unlock-ring{animation:ringPulse .7s ease-out forwards;}
+  @keyframes ringPulse{
+    0%{opacity:0.9;transform:translate(-50%,-50%) scale(0.7);}
+    100%{opacity:0;transform:translate(-50%,-50%) scale(1.8);}
+  }
+  .brand-logo{
+    width:min(46vw,230px);opacity:0;transform:scale(1.05);
+    animation:logoIn 1.8s var(--ease) 0.2s forwards;
+  }
+  @keyframes logoIn{to{opacity:1;transform:scale(1);}}
+  .entry-sub{
+    margin-top:30px;font-family:var(--sans);font-weight:400;
+    font-size:0.72rem;letter-spacing:0.22em;color:var(--grey);text-transform:uppercase;
+    opacity:0;animation:fadeIn 1.2s var(--ease) 1.3s forwards;
+  }
+  @keyframes fadeIn{to{opacity:1;}}
+  #enterBtn{
+    margin-top:44px;background:transparent;border:1px solid var(--line);color:var(--white);
+    font-family:var(--sans);font-weight:400;letter-spacing:0.22em;font-size:0.72rem;padding:15px 44px;cursor:pointer;
+    opacity:0;animation:fadeIn 1.2s var(--ease) 1.9s forwards;text-transform:uppercase;
+    transition:border-color .4s ease, background .4s ease, color .4s ease;
+  }
+  #enterBtn:hover{background:var(--white);color:var(--black);border-color:var(--white);}
+  #enterBtn:focus-visible{outline:1px solid var(--white);outline-offset:4px;}
+
+  @media (prefers-reduced-motion: reduce){
+    #entry{transition:opacity .4s ease, visibility .4s ease;}
+    #entry.opening{clip-path:circle(150% at 50% 50%);}
+    .unlock-ring{display:none;}
+  }
+
+  /* ===== SITE ===== */
+  #site{opacity:0;transition:opacity 1.1s var(--ease);}
+  #site.active{opacity:1;}
+
+  /* ===== AMBIENT BACKGROUND ===== */
+  .ambient-bg{
+    position:fixed;inset:0;z-index:-2;pointer-events:none;
+    background:
+      radial-gradient(circle at 18% 25%, rgba(247,247,245,0.05), transparent 42%),
+      radial-gradient(circle at 82% 72%, rgba(247,247,245,0.04), transparent 46%);
+    background-size:180% 180%;
+    animation:ambientDrift 55s ease-in-out infinite alternate;
+  }
+  @keyframes ambientDrift{
+    0%{background-position:0% 0%, 100% 100%;}
+    100%{background-position:12% 8%, 88% 92%;}
+  }
+  @media (prefers-reduced-motion: reduce){ .ambient-bg{animation:none;} }
+
+  .ticker{
+    background:var(--white);color:var(--black);overflow:hidden;white-space:nowrap;
+    font-family:var(--sans);font-size:0.68rem;letter-spacing:0.16em;font-weight:500;
+    padding:9px 0;position:relative;z-index:120;text-transform:uppercase;
+  }
+  .ticker-track{display:inline-block;padding-left:100%;animation:marquee 75s linear infinite;}
+  .ticker-track span{margin-right:64px;}
+  @keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-100%);}}
+
+  header.nav{
+    position:sticky;top:0;z-index:110;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px var(--pad-x);
+    background:rgba(10,10,10,0.88);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .brandmark{display:flex;align-items:center;gap:12px;cursor:pointer;}
+  .brandmark img{height:24px;width:auto;}
+  .brandmark .mark{font-family:var(--serif);font-size:1.05rem;letter-spacing:0.14em;color:var(--white);font-weight:500;}
+  .nav-right{display:flex;align-items:center;gap:24px;}
+  #clock{font-family:var(--sans);font-size:0.68rem;letter-spacing:0.1em;color:var(--grey-dim);display:none;font-weight:300;}
+  @media (min-width:640px){#clock{display:inline;}}
+
+  .nav-links{
+    display:flex;align-items:center;gap:2px;padding:5px;border:1px solid var(--line);
+    border-radius:999px;background:rgba(247,247,245,0.04);
+  }
+  .nav-links a{
+    padding:10px 16px;border-radius:999px;color:var(--grey);font-family:var(--sans);
+    font-size:0.7rem;letter-spacing:0.05em;transition:.25s var(--ease);white-space:nowrap;
+  }
+  .nav-links a:hover, .nav-links a.active{color:var(--black);background:var(--white);}
+
+  .menu-button{
+    display:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);
+    background:none;color:var(--white);cursor:pointer;position:relative;flex-shrink:0;
+  }
+  .menu-button::before,.menu-button::after{
+    content:'';position:absolute;left:11px;right:11px;height:1px;background:currentColor;
+    transition:transform .3s var(--ease), top .3s var(--ease), bottom .3s var(--ease);
+  }
+  .menu-button::before{top:16px;}
+  .menu-button::after{bottom:16px;}
+  .menu-button.open::before{top:19px;transform:rotate(45deg);}
+  .menu-button.open::after{bottom:19px;transform:rotate(-45deg);}
+
+  @media (max-width:860px){
+    .nav-links{
+      display:none;position:fixed;top:78px;left:16px;right:16px;flex-direction:column;
+      align-items:stretch;gap:0;background:var(--black-2);border-radius:14px;padding:8px;
+      box-shadow:0 20px 50px rgba(0,0,0,0.5);
+    }
+    .nav-links.open{display:flex;}
+    .nav-links a{padding:15px 18px;border-radius:8px;text-align:left;}
+    .menu-button{display:block;}
+  }
+
+  /* sections */
+  section.block{padding:clamp(64px,10vw,130px) var(--pad-x);position:relative;text-align:center;}
+  .reveal{
+    opacity:0;transform:translateY(18px) scale(0.99);filter:blur(4px);
+    transition:opacity 1.1s var(--ease), transform 1.1s var(--ease), filter 1.1s var(--ease);
+  }
+  .reveal.in{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}
+
+  @keyframes cardIn{
+    from{opacity:0;transform:translateY(16px) scale(0.99);filter:blur(4px);}
+    to{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}
+  }
+  .vault-grid .product, .link-grid .link-card{opacity:0;}
+  .vault-grid.in .product, .link-grid.in .link-card{animation:cardIn .9s var(--ease) forwards;}
+  .vault-grid.in .product:nth-child(2){animation-delay:.08s;}
+  .vault-grid.in .product:nth-child(3){animation-delay:.16s;}
+  .vault-grid.in .product:nth-child(4){animation-delay:.24s;}
+  .link-grid.in .link-card:nth-child(2){animation-delay:.06s;}
+  .link-grid.in .link-card:nth-child(3){animation-delay:.12s;}
+  .link-grid.in .link-card:nth-child(4){animation-delay:.18s;}
+  .link-grid.in .link-card:nth-child(5){animation-delay:.24s;}
+  .link-grid.in .link-card:nth-child(6){animation-delay:.30s;}
+  .link-grid.in .link-card:nth-child(7){animation-delay:.36s;}
+  .eyebrow{
+    font-family:var(--sans);font-size:0.7rem;letter-spacing:0.24em;color:var(--grey-dim);
+    text-transform:uppercase;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;
+    font-weight:400;width:fit-content;
+  }
+  .block-title{font-family:var(--serif);font-size:clamp(2rem,4.6vw,3.4rem);letter-spacing:0.01em;font-weight:500;max-width:900px;margin:0 auto;}
+  .block-sub{color:var(--grey);max-width:560px;margin:18px auto 0;font-size:0.95rem;line-height:1.7;font-weight:300;}
+
+  /* HERO */
+  #hero{
+    position:relative;
+    min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+    background:radial-gradient(circle at 50% 45%, #131313 0%, var(--black) 70%);
+    background-size:140% 140%;
+    animation:heroDrift 26s ease-in-out infinite alternate;
+    border-bottom:1px solid var(--line);padding:90px var(--pad-x) 0;
+  }
+  @keyframes heroDrift{
+    0%{background-position:48% 42%;}
+    100%{background-position:52% 48%;}
+  }
+  .hero-logo{width:min(50vw,150px);opacity:0.95;margin-bottom:34px;}
+  #hero h1{font-family:var(--serif);font-size:clamp(2.6rem,7.5vw,5.6rem);line-height:1.04;letter-spacing:0.01em;font-weight:500;max-width:940px;}
+  #hero .hero-sub{color:var(--grey);margin-top:24px;max-width:500px;font-size:1rem;line-height:1.75;font-weight:300;}
+  .cta-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:42px;}
+  .cta-primary,.cta-secondary{
+    font-family:var(--sans);font-size:0.72rem;letter-spacing:0.16em;padding:17px 38px;
+    cursor:pointer;text-transform:uppercase;transition:all .35s var(--ease);border:1px solid var(--white);font-weight:400;
+  }
+  .cta-primary{background:var(--white);color:var(--black);}
+  .cta-primary:hover{background:transparent;color:var(--white);}
+  .cta-secondary{background:transparent;color:var(--white);border-color:var(--line);}
+  .cta-secondary:hover{border-color:var(--white);}
+  .scroll-cue{
+    margin-top:70px;font-family:var(--sans);font-size:0.66rem;letter-spacing:0.18em;color:var(--grey-dim);
+    text-transform:uppercase;font-weight:300;
+  }
+
+  /* LINKS */
+  .link-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1px;background:var(--line);margin:46px auto 0;max-width:940px;}
+  .link-card{
+    background:var(--black);padding:28px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;
+    transition:background .35s;transform-style:preserve-3d;will-change:transform;
+  }
+  .link-card:hover{background:var(--black-2);}
+  .link-card .licon{
+    width:26px;height:26px;color:var(--grey);transition:color .35s;
+  }
+  .link-card .licon svg{display:block;width:100%;height:100%;}
+  .link-card:hover .licon{color:var(--white);}
+  .link-card .lname{
+    font-family:var(--serif);font-size:1.15rem;letter-spacing:0.02em;
+    position:relative;display:inline-block;padding-bottom:9px;width:fit-content;
+  }
+  .link-card .lname::after{
+    content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--white);
+    transition:width .45s var(--ease);
+  }
+  .link-card:hover .lname::after{width:100%;}
+  .link-card .lmeta{font-family:var(--sans);font-size:0.62rem;letter-spacing:0.16em;color:var(--grey-dim);text-transform:uppercase;}
+
+  /* THE VAULT (unreleased) */
+  .lock-flow{max-width:480px;margin:46px auto 0;text-align:left;}
+  .lock-step{display:none;}
+  .lock-step.active{display:block;}
+  .unlock-box{border:1px solid var(--line);padding:32px;}
+  .unlock-box p{color:var(--grey);font-size:0.88rem;margin-bottom:18px;line-height:1.6;font-weight:300;}
+  .unlock-box form{display:flex;gap:10px;flex-wrap:wrap;}
+  .unlock-box input{
+    flex:1;min-width:180px;background:var(--black-2);border:1px solid var(--line);color:var(--white);
+    padding:13px 15px;font-family:var(--sans);font-size:0.85rem;font-weight:300;
+  }
+  .unlock-box input::placeholder{color:var(--grey-dim);}
+  .unlock-box input:focus-visible{outline:1px solid var(--white);}
+  .unlock-box button{
+    background:var(--white);color:var(--black);border:none;padding:13px 24px;
+    font-family:var(--sans);font-size:0.7rem;letter-spacing:0.1em;cursor:pointer;text-transform:uppercase;font-weight:400;
+  }
+  .unlock-msg{margin-top:16px;font-family:var(--sans);font-size:0.78rem;color:var(--white);min-height:1em;font-weight:300;}
+  .track-list{display:flex;flex-direction:column;gap:1px;background:var(--line);margin:30px auto 0;max-width:660px;text-align:left;}
+  .track{background:var(--black);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+  .track-name{font-family:var(--serif);font-size:1rem;letter-spacing:0.01em;}
+  .track-meta{font-family:var(--sans);font-size:0.68rem;color:var(--grey);letter-spacing:0.06em;font-weight:300;}
+  .play-btn{font-family:var(--sans);font-size:0.66rem;letter-spacing:0.1em;border:1px solid var(--line);padding:9px 18px;background:none;color:var(--white);cursor:pointer;text-transform:uppercase;}
+  .play-btn:hover{border-color:var(--white);}
+
+  /* ABOUT */
+  .about-wrap{display:flex;flex-direction:column;align-items:center;gap:28px;margin:46px auto 0;}
+  .about-badge{width:150px;flex-shrink:0;opacity:0.92;}
+  .about-text{max-width:640px;margin:0 auto;color:var(--grey);line-height:1.8;font-size:1rem;font-weight:300;}
+  .about-text strong{color:var(--white);font-weight:500;font-family:var(--serif);}
+
+  /* STORY */
+  .timeline{max-width:640px;margin:46px auto 0;}
+  .tl-entry{padding:28px 0;border-bottom:1px solid var(--line);}
+  .tl-entry:last-child{border-bottom:none;padding-bottom:0;}
+  .tl-year{font-family:var(--sans);font-size:0.7rem;letter-spacing:0.18em;color:var(--grey-dim);font-weight:400;}
+  .tl-title{font-family:var(--serif);font-size:1.15rem;margin-top:8px;letter-spacing:0.01em;}
+  .tl-text{margin:9px auto 0;color:var(--grey);font-size:0.88rem;line-height:1.65;max-width:560px;font-weight:300;}
+
+  /* JOURNAL */
+  .log{border-bottom:1px solid var(--line);padding:22px 0;max-width:640px;margin:0 auto;}
+  .log-time{font-family:var(--sans);font-size:0.66rem;color:var(--grey-dim);letter-spacing:0.1em;font-weight:300;}
+  .log-text{margin-top:11px;color:var(--grey);line-height:1.7;font-size:0.96rem;font-weight:300;}
+
+  .section-note{font-family:var(--sans);font-size:0.68rem;color:var(--grey-dim);margin:38px auto 0;letter-spacing:0.03em;line-height:1.7;max-width:640px;font-weight:300;}
+
+  /* CONTACT BAND */
+  .contact-band{
+    width:min(680px, 100%);margin:0 auto;padding:44px 36px;text-align:center;
+    display:flex;flex-direction:column;align-items:center;gap:22px;
+    border:1px solid var(--line);background:rgba(247,247,245,0.03);backdrop-filter:blur(14px);
+  }
+  .contact-band b{display:block;font-family:var(--serif);font-size:1.25rem;font-weight:500;}
+  .contact-band span{color:var(--grey);font-size:0.85rem;margin-top:8px;display:block;}
+  .contact-band a{
+    background:var(--white);color:var(--black);border:1px solid var(--white);padding:16px 34px;
+    font-family:var(--sans);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;
+    white-space:nowrap;transition:background .3s,color .3s;
+  }
+  .contact-band a:hover{background:transparent;color:var(--white);}
+
+  footer.site-footer{
+    border-top:1px solid var(--line);padding:40px var(--pad-x) 34px;
+    display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center;
+    font-family:var(--sans);font-weight:300;
+  }
+  .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:28px;}
+  .footer-links a{
+    font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--grey);
+    border-bottom:1px solid transparent;padding-bottom:2px;transition:color .3s,border-color .3s;
+  }
+  .footer-links a:hover{color:var(--white);border-color:var(--white);}
+  .footer-copyright{font-size:0.65rem;letter-spacing:0.08em;color:var(--grey-dim);text-transform:uppercase;}
+
+  #floatCta{
+    position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:90;
+    background:var(--white);color:var(--black);font-family:var(--sans);font-size:0.68rem;
+    letter-spacing:0.14em;padding:15px 30px;text-transform:uppercase;border:none;cursor:pointer;font-weight:400;
+    box-shadow:0 10px 32px rgba(0,0,0,0.55);opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s;
+  }
+  #floatCta.show{opacity:1;visibility:visible;}
+  @media (min-width:900px){#floatCta{display:none;}}
+
+  /* ===== NEWSLETTER MODAL ===== */
+  #newsletterOverlay{
+    position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:170;
+    opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility .5s var(--ease);
+    display:flex;align-items:center;justify-content:center;padding:20px;
+  }
+  #newsletterOverlay.open{opacity:1;visibility:visible;}
+  .newsletter-box{
+    background:var(--black-2);border:1px solid var(--line);max-width:440px;width:100%;
+    padding:48px 40px;text-align:center;position:relative;
+    transform:translateY(16px);transition:transform .5s var(--ease);
+  }
+  #newsletterOverlay.open .newsletter-box{transform:translateY(0);}
+  .newsletter-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--grey);font-size:1.1rem;cursor:pointer;}
+  .newsletter-close:hover{color:var(--white);}
+  .newsletter-box img{width:44px;margin:0 auto 22px;}
+  .newsletter-box h3{font-family:var(--serif);font-size:1.5rem;font-weight:500;letter-spacing:0.01em;}
+  .newsletter-box p{color:var(--grey);font-size:0.88rem;margin-top:14px;line-height:1.65;font-weight:300;}
+  .newsletter-box form{display:flex;flex-direction:column;gap:12px;margin-top:26px;}
+  .newsletter-box input{
+    background:var(--black);border:1px solid var(--line);color:var(--white);padding:14px 16px;
+    font-family:var(--sans);font-size:0.85rem;text-align:center;font-weight:300;
+  }
+  .newsletter-box input::placeholder{color:var(--grey-dim);}
+  .newsletter-box button[type="submit"]{
+    background:var(--white);color:var(--black);border:none;padding:14px;
+    font-family:var(--sans);font-size:0.7rem;letter-spacing:0.14em;cursor:pointer;text-transform:uppercase;font-weight:400;
+  }
+  .newsletter-box button[type="submit"]:hover{background:var(--grey);}
+  .newsletter-msg{margin-top:14px;font-size:0.78rem;color:var(--white);font-weight:300;}
+  .newsletter-decline{margin-top:16px;font-family:var(--sans);font-size:0.7rem;color:var(--grey-dim);background:none;border:none;cursor:pointer;letter-spacing:0.06em;text-decoration:underline;text-underline-offset:3px;}
+  .newsletter-decline:hover{color:var(--grey);}
+
+  /* ===== COOKIE BAR ===== */
+  #cookieBar{
+    position:fixed;bottom:0;left:0;right:0;z-index:160;
+    background:var(--black-2);border-top:1px solid var(--line);
+    padding:20px clamp(20px,5vw,48px);
+    display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+    transform:translateY(100%);transition:transform .5s var(--ease);
+  }
+  #cookieBar.show{transform:translateY(0);}
+  #cookieBar p{font-family:var(--sans);font-size:0.82rem;color:var(--grey);line-height:1.6;max-width:640px;font-weight:300;}
+  #cookieBar p a{text-decoration:underline;color:var(--white);text-underline-offset:2px;}
+  .cookie-actions{display:flex;gap:12px;flex-shrink:0;}
+  .cookie-accept{
+    background:var(--white);color:var(--black);border:none;padding:12px 28px;
+    font-family:var(--sans);font-size:0.68rem;letter-spacing:0.1em;cursor:pointer;text-transform:uppercase;font-weight:400;
+  }
+  .cookie-decline{
+    background:none;color:var(--grey);border:1px solid var(--line);padding:12px 22px;
+    font-family:var(--sans);font-size:0.68rem;letter-spacing:0.1em;cursor:pointer;text-transform:uppercase;font-weight:400;
+  }
+  .cookie-decline:hover{border-color:var(--white);color:var(--white);}
+
+  @media (prefers-reduced-motion:reduce){*{animation-duration:0.01ms !important;transition-duration:0.01ms !important;}html{scroll-behavior:auto;}}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="grain"></div>
+
+<!-- ENTRY -->
+<section id="entry">
+  <div class="entry-content">
+    <div class="unlock-ring"></div>
+    <img src="assets/main-black.jpg" alt="Cuban DeVille" class="brand-logo">
+    <div class="entry-sub">Enter the world of Cuban DeVille</div>
+    <button id="enterBtn">Enter</button>
+  </div>
+</section>
+
+<div class="ambient-bg"></div>
+
+<!-- SITE -->
+<div id="site">
+
+  <header class="nav">
+    <a href="#hero" class="brandmark">
+      <img src="assets/badge-black.jpg" alt="">
+      <span class="mark">Cuban DeVille</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#links" data-nav>Listen</a>
+      <a href="#unreleased" data-nav>The Vault</a>
+      <a href="#about" data-nav>About</a>
+      <a href="#story" data-nav>Story</a>
+      <a href="#journal" data-nav>Journal</a>
+    </nav>
+    <div class="nav-right">
+      <span id="clock">--:--:--</span>
+      <button class="menu-button" id="menuButton" aria-label="Menu"></button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="hero">
+    <canvas id="constellation"></canvas>
+    <img src="assets/badge-black.jpg" alt="" class="hero-logo reveal">
+    <h1 class="reveal">Cuban DeVille</h1>
+    <p class="hero-sub reveal">New music, and a private vault of unreleased work. Everything begins here.</p>
+    <div class="cta-row reveal">
+      <button class="cta-primary" data-nav-target="#links">Listen Now</button>
+      <button class="cta-secondary" data-nav-target="#unreleased">Enter the Vault</button>
+    </div>
+    <div class="scroll-cue reveal">Scroll to explore</div>
+  </section>
+
+  <!-- LINKS -->
+  <section class="block" id="links">
+    <div class="eyebrow reveal"><span class="star">✦</span>Listen</div>
+    <h2 class="block-title reveal">Every platform,<br>one place.</h2>
+    <p class="block-sub reveal">Everywhere Cuban DeVille lives.</p>
+    <div class="link-grid reveal">
+      <a class="link-card" href="https://open.spotify.com/artist/6oTMQhViChy06Mf5vsYTk0?si=1ChtMc0DT-eco8YWEMeLrw&utm_source=copy-link" target="_blank" rel="noopener">
+        <span class="licon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><path d="M6.5 9.5c3.5-1 8-.7 11 1" stroke-linecap="round"/><path d="M7 13c3-.8 6.7-.5 9.3.9" stroke-linecap="round"/><path d="M7.5 16.2c2.5-.6 5.5-.4 7.7.8" stroke-linecap="round"/></svg></span>
+        <span class="lname">Spotify</span><span class="lmeta">Visit Profile</span>
+      </a>
+      <a class="link-card" href="https://music.apple.com/za/artist/cuban-deville/1766002179" target="_blank" rel="noopener">
+        <span class="licon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 17a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"/><path d="M17 15.5a2 2 0 1 1 0-4 2 2 0 0 1 0 4Z"/><path d="M11 13V6.5l6-1.3V11" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="lname">Apple Music</span><span class="lmeta">Visit Profile</span>
+      </a>
+      <a class="link-card" href="https://youtube.com/@cubandeville?si=hf0r9Ttj9zHsTKbb" target="_blank" rel="noopener">
+        <span class="licon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M10.5 9.5v5l4.5-2.5-4.5-2.5Z" fill="currentColor" stroke="none"/></svg></span>
+        <span class="lname">YouTube</span><span class="lmeta">Visit Profile</span>
+      </a>
+      <a class="link-card" href="https://www.instagram.com/cubandeville?igsh=MWd6OWZndHJqbHBjcg%3D%3D&utm_source=qr" target="_blank" rel="noopener">
+        <span class="licon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17" cy="7" r="0.9" fill="currentColor" stroke="none"/></svg></span>
+        <span class="lname">Instagram</span><span class="lmeta">Visit Profile</span>
+      </a>
+      <a class="link-card" href="https://www.tiktok.com/@cubandeville?_r=1&_t=ZS-98ZzgkzIjOH" target="_blank" rel="noopener">
+        <span class="licon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M13 4v10.2a3.3 3.3 0 1 1-3-3.28" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 4c.5 2.3 2.2 3.9 4.5 4.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="lname">TikTok</span><span class="lmeta">Visit Profile</span>
+      </a>
+      <a class="link-card" href="https://on.soundcloud.com/gpjsqQSchwt19ZXSVI" target="_blank" rel="noopener">
+        <span class="licon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 16h11a3.5 3.5 0 0 0 .5-6.96A5 5 0 0 0 8 8.6 3 3 0 0 0 6 16Z" stroke-linejoin="round"/><path d="M8.5 12v3.5M10.5 10.5v5M12.5 11v4.3" stroke-linecap="round"/></svg></span>
+        <span class="lname">SoundCloud</span><span class="lmeta">Visit Profile</span>
+      </a>
+      <a class="link-card" href="https://x.com/cubandeville?s=11" target="_blank" rel="noopener">
+        <span class="licon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 5l14 14M19 5 5 19" stroke-linecap="round"/></svg></span>
+        <span class="lname">X</span><span class="lmeta">Visit Profile</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- THE VAULT -->
+  <section class="block" id="unreleased">
+    <div class="eyebrow reveal"><span class="star">✦</span>Private Access</div>
+    <h2 class="block-title reveal">The Vault</h2>
+    <p class="block-sub reveal">Unreleased work, available nowhere else. Complimentary access, email required.</p>
+
+    <div class="lock-flow reveal">
+      <div class="lock-step active" id="step-email">
+        <div class="unlock-box">
+          <p>This vault is private. Enter your email and we'll generate an access code.</p>
+          <form id="emailForm">
+            <input type="email" id="emailInput" placeholder="Email address" required>
+            <button type="submit">Get Access Code</button>
+          </form>
+        </div>
+      </div>
+      <div class="lock-step" id="step-password">
+        <div class="unlock-box">
+          <p>A code has been generated for that email. Enter it below for access.</p>
+          <form id="passwordForm">
+            <input type="text" id="passwordInput" placeholder="Access code" required>
+            <button type="submit">Unlock</button>
+          </form>
+          <div class="unlock-msg" id="passwordMsg"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="track-list" id="unreleasedTracks" style="display:none;">
+      <div class="track"><div><div class="track-name">Untitled — Session 04</div><div class="track-meta">03:12 · Unreleased</div></div><button class="play-btn">Play</button></div>
+      <div class="track"><div><div class="track-name">Working Title — Red Room</div><div class="track-meta">02:47 · Unreleased</div></div><button class="play-btn">Play</button></div>
+      <div class="track"><div><div class="track-name">Untitled — Session 07</div><div class="track-meta">03:35 · Unreleased</div></div><button class="play-btn">Play</button></div>
+    </div>
+
+    <p class="section-note reveal">Every code is generated and verified securely — nothing is hard-coded or visible on the page.</p>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="block" id="about">
+    <div class="eyebrow reveal"><span class="star">✦</span>About</div>
+    <h2 class="block-title reveal">Who is Cuban DeVille</h2>
+    <div class="about-wrap reveal">
+      <img src="assets/badge-black.jpg" alt="Cuban DeVille badge" class="about-badge">
+      <div class="about-text">
+        <p><strong>Cuban DeVille</strong> is a creator from Cape Town, South Africa — working across music, brand, and technology as a single continuous practice rather than separate lanes.</p>
+        <p style="margin-top:16px;">Beyond the music, he's an entrepreneur — holding majority shares in several successful businesses, and the founder of a well-known AI automation agency.</p>
+        <p style="margin-top:16px;">At the center of it is the music: vocal-driven, deliberate, built take by take rather than rushed. Everything else — the vocal chains, the Vault, the world this site lives in — exists to support that same standard.</p>
+        <p style="margin-top:16px;">The mission is simple: create things that outlast the moment they were made in.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="block" id="story">
+    <div class="eyebrow reveal"><span class="star">✦</span>Story</div>
+    <h2 class="block-title reveal">Timeline &amp; Discography</h2>
+    <div class="timeline reveal">
+      <div class="tl-entry">
+        <div class="tl-year">2017</div>
+        <div class="tl-title">First beats</div>
+        <div class="tl-text">Started making beats — the first sign of learning music theory and beginning to shape the dream of who he wanted to become.</div>
+      </div>
+      <div class="tl-entry">
+        <div class="tl-year">2019</div>
+        <div class="tl-title">First recording — "Lambo"</div>
+        <div class="tl-text">Recorded on a pair of borrowed earphones in a friend's home studio. Released under the name $WISH — the first song out into the world.</div>
+      </div>
+      <div class="tl-entry">
+        <div class="tl-year">2020</div>
+        <div class="tl-title">"Merky"</div>
+        <div class="tl-text">Second release, out during lockdown. The first real traction — friends, family, and a growing local following.</div>
+      </div>
+      <div class="tl-entry">
+        <div class="tl-year">2022</div>
+        <div class="tl-title">"Dark Horse"</div>
+        <div class="tl-text">First release distributed across every streaming platform. Watching the numbers climb in real time made it feel real for the first time.</div>
+      </div>
+      <div class="tl-entry">
+        <div class="tl-year">2022</div>
+        <div class="tl-title">"Life In A Tonka"</div>
+        <div class="tl-text">A release that became a huge influence on the sound he'd eventually settle into. Made alongside longtime friend and collaborator Syntexx (formerly Prod. Texx), a producer from Pretoria, South Africa — the two met on PlayStation in 2017, playing Fortnite, and have worked on projects and songs together ever since.</div>
+      </div>
+      <div class="tl-entry">
+        <div class="tl-year">2023</div>
+        <div class="tl-title">"Art Saves Hearts"</div>
+        <div class="tl-text">Debut album, released as $WISH — an acronym hidden in plain sight. A quiet stretch followed, stepping back from the spotlight.</div>
+      </div>
+      <div class="tl-entry">
+        <div class="tl-year">2024</div>
+        <div class="tl-title">The reset</div>
+        <div class="tl-text">A month away from everything. A full rebuild — physically, financially, mentally. The old identity no longer fit, so it was retired for good.</div>
+      </div>
+      <div class="tl-entry">
+        <div class="tl-year">2025</div>
+        <div class="tl-title">Cuban DeVille is born</div>
+        <div class="tl-text">A new name, drawn from Cuban links and Cruella de Vil — vintage, high-fashion, high-value. First release under the name: a self-titled project, "21," marking the year he turned twenty-one.</div>
+      </div>
+      <div class="tl-entry">
+        <div class="tl-year">2025</div>
+        <div class="tl-title">"Cornelius"</div>
+        <div class="tl-text">A self-titled follow-up project, continuing to define the sound.</div>
+      </div>
+      <div class="tl-entry">
+        <div class="tl-year">2026</div>
+        <div class="tl-title">"Corporate"</div>
+        <div class="tl-text">The true Cuban DeVille sound, fully evolved. A new era, starting now.</div>
+      </div>
+    </div>
+    <p class="section-note reveal">The full story, from the first beat to now.</p>
+  </section>
+
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>Album Out Now — CORPORATE — Out Now!</span>
+      <span>Album Out Now — CORPORATE — Out Now!</span>
+      <span>Album Out Now — CORPORATE — Out Now!</span>
+      <span>Album Out Now — CORPORATE — Out Now!</span>
+      <span>Album Out Now — CORPORATE — Out Now!</span>
+      <span>Album Out Now — CORPORATE — Out Now!</span>
+    </div>
+  </div>
+
+  <!-- JOURNAL -->
+  <section class="block" id="journal">
+    <div class="eyebrow reveal"><span class="star">✦</span>Journal</div>
+    <h2 class="block-title reveal">Notes from the Studio</h2>
+    <div class="reveal" style="margin-top:46px;">
+      <div class="log">
+        <div class="log-time">07.29.2026</div>
+        <div class="log-text">Reworked the bridge on "PUT ME IN VOGUE" for the fourth time. Kept the first take.</div>
+      </div>
+      <div class="log">
+        <div class="log-time">07.22.2026</div>
+        <div class="log-text">"WANNA HAVE FUN" is almost there — vocal chain finally sitting right.</div>
+      </div>
+      <div class="log">
+        <div class="log-time">07.14.2026</div>
+        <div class="log-text">First session on "UNDERSTAND." Early days, but the direction feels right.</div>
+      </div>
+    </div>
+    <p class="section-note reveal">Studio updates, posted between releases.</p>
+  </section>
+
+  <section class="block" style="padding-top:0;">
+    <div class="contact-band reveal">
+      <div>
+        <b>Bookings, features, and collaborations.</b>
+        <span>For business inquiries, reach out directly.</span>
+      </div>
+      <a href="mailto:bookings@cubandeville.com">bookings@cubandeville.com</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Use</a>
+    </div>
+    <div class="footer-copyright">© <span id="year"></span> Cuban DeVille. All Rights Reserved.</div>
+  </footer>
+</div>
+
+<button id="floatCta" data-nav-target="#links">Listen Now</button>
+
+<!-- NEWSLETTER MODAL -->
+<div id="newsletterOverlay">
+  <div class="newsletter-box">
+    <button class="newsletter-close" id="newsletterClose">✕</button>
+    <img src="assets/badge-black.jpg" alt="">
+    <h3>Join the Newsletter</h3>
+    <p>Be first to hear unreleased music, exclusive drops, and private vault access.</p>
+    <form id="newsletterForm">
+      <input type="email" id="newsletterEmail" placeholder="Email address" required>
+      <button type="submit">Join</button>
+    </form>
+    <div class="newsletter-msg" id="newsletterMsg"></div>
+    <button class="newsletter-decline" id="newsletterDecline">No thanks</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  const entry = document.getElementById('entry');
+  const site = document.getElementById('site');
+  const enterBtn = document.getElementById('enterBtn');
+
+  let entering = false;
+  enterBtn.addEventListener('click', () => {
+    if(entering) return;
+    entering = true;
+
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    site.classList.add('active');
+    startTimedPrompts();
+
+    if(reducedMotion){
+      entry.classList.add('hidden');
+      return;
+    }
+
+    entry.classList.add('unlocking');
+    setTimeout(() => entry.classList.add('opening'), 380);
+    setTimeout(() => entry.classList.add('hidden'), 380 + 1200);
+  });
+
+  // Clock
+  const clock = document.getElementById('clock');
+  function tick(){ clock.textContent = new Date().toTimeString().slice(0,8); }
+  tick(); setInterval(tick, 1000);
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Pill nav — mobile toggle
+  const menuButton = document.getElementById('menuButton');
+  const navLinks = document.getElementById('navLinks');
+  menuButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    menuButton.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  document.addEventListener('click', (e) => {
+    if(!navLinks.contains(e.target) && !menuButton.contains(e.target)){
+      navLinks.classList.remove('open'); menuButton.classList.remove('open');
+    }
+  });
+  navLinks.querySelectorAll('[data-nav]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      navLinks.classList.remove('open'); menuButton.classList.remove('open');
+      const target = document.querySelector(a.getAttribute('href'));
+      if(target) target.scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  document.querySelector('.brandmark').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('hero').scrollIntoView({behavior:'smooth'});
+  });
+
+  document.querySelectorAll('[data-nav-target]').forEach(el => {
+    el.addEventListener('click', () => {
+      document.querySelector(el.dataset.navTarget).scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  // Scroll progress bar + nav active-section highlight
+  const progressBar = document.getElementById('progress');
+  const spySections = [...document.querySelectorAll('section[id]')];
+  const navItems = [...navLinks.querySelectorAll('a')];
+  function onScroll(){
+    const max = document.documentElement.scrollHeight - innerHeight;
+    progressBar.style.width = `${Math.max(0, Math.min(1, max > 0 ? scrollY / max : 0)) * 100}%`;
+    let current = '';
+    spySections.forEach(section => {
+      if(scrollY >= section.offsetTop - 160) current = section.id;
+    });
+    navItems.forEach(item => item.classList.toggle('active', item.getAttribute('href') === `#${current}`));
+  }
+  addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Cursor glow
+  const glow = document.getElementById('cursorGlow');
+  addEventListener('pointermove', (e) => {
+    glow.style.left = `${e.clientX}px`;
+    glow.style.top = `${e.clientY}px`;
+  }, {passive:true});
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Floating mobile CTA
+  const floatCta = document.getElementById('floatCta');
+  const hero = document.getElementById('hero');
+  new IntersectionObserver((entries) => {
+    entries.forEach(en => floatCta.classList.toggle('show', !en.isIntersecting));
+  }, {threshold:0}).observe(hero);
+
+  // 3D tilt on link cards — subtle, cursor-driven depth
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches && matchMedia('(hover: hover)').matches){
+    document.querySelectorAll('.link-card').forEach(card => {
+      let frame = null;
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        if(frame) cancelAnimationFrame(frame);
+        frame = requestAnimationFrame(() => {
+          card.style.transform = `perspective(900px) rotateX(${(-y * 6).toFixed(2)}deg) rotateY(${(x * 6).toFixed(2)}deg) translateY(-4px)`;
+        });
+      });
+      card.addEventListener('mouseleave', () => {
+        if(frame) cancelAnimationFrame(frame);
+        card.style.transform = '';
+      });
+    });
+  }
+
+  // Constellation canvas (hero background)
+  const canvas = document.getElementById('constellation');
+  if(canvas){
+    const ctx = canvas.getContext('2d');
+    let points = [];
+    function resizeCanvas(){
+      const parent = canvas.parentElement;
+      const w = parent.offsetWidth, h = parent.offsetHeight;
+      const ratio = Math.min(devicePixelRatio || 1, 2);
+      canvas.width = Math.floor(w * ratio);
+      canvas.height = Math.floor(h * ratio);
+      canvas.style.width = `${w}px`;
+      canvas.style.height = `${h}px`;
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+      points = Array.from({length: Math.min(70, Math.floor(w / 22))}, () => ({
+        x: Math.random() * w, y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.18, vy: (Math.random() - 0.5) * 0.18,
+        r: Math.random() * 1.4 + 0.6
+      }));
+    }
+    function draw(){
+      const w = canvas.width / (Math.min(devicePixelRatio || 1, 2));
+      const h = canvas.height / (Math.min(devicePixelRatio || 1, 2));
+      ctx.clearRect(0, 0, w, h);
+      for(const p of points){
+        p.x += p.vx; p.y += p.vy;
+        if(p.x < 0 || p.x > w) p.vx *= -1;
+        if(p.y < 0 || p.y > h) p.vy *= -1;
+      }
+      for(let i = 0; i < points.length; i++){
+        for(let j = i + 1; j < points.length; j++){
+          const a = points[i], b = points[j];
+          const dist = Math.hypot(a.x - b.x, a.y - b.y);
+          if(dist < 130){
+            ctx.strokeStyle = `rgba(247,247,245,${(1 - dist / 130) * 0.14})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+          }
+        }
+      }
+      for(const p of points){
+        ctx.fillStyle = 'rgba(247,247,245,0.45)';
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
+      }
+      if(!document.hidden) requestAnimationFrame(draw);
+    }
+    document.addEventListener('visibilitychange', () => {
+      if(!document.hidden) requestAnimationFrame(draw);
+    });
+    if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+      resizeCanvas();
+      draw();
+      addEventListener('resize', resizeCanvas);
+    }
+  }
+
+  /* ===== UNRELEASED VAULT ===== */
+  const emailForm = document.getElementById('emailForm');
+  const passwordForm = document.getElementById('passwordForm');
+  const passwordMsg = document.getElementById('passwordMsg');
+  let vaultEmail = '';
+
+  emailForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    vaultEmail = document.getElementById('emailInput').value.trim();
+    const btn = emailForm.querySelector('button');
+    const original = btn.textContent;
+    btn.textContent = 'Sending…';
+    try{
+      await fetch('/api/vault-request', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({email: vaultEmail})
+      });
+    }catch(err){ /* proceed regardless — the code step will simply fail to verify if something went wrong */ }
+    btn.textContent = original;
+    document.getElementById('step-email').classList.remove('active');
+    document.getElementById('step-password').classList.add('active');
+  });
+
+  passwordForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const code = document.getElementById('passwordInput').value.trim();
+    passwordMsg.textContent = 'Checking…';
+    try{
+      const res = await fetch('/api/vault-verify', {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({email: vaultEmail, code})
+      });
+      const data = await res.json();
+      if(data.ok){
+        passwordMsg.textContent = 'Access granted.';
+        document.getElementById('unreleasedTracks').style.display = 'flex';
+        document.querySelector('.lock-flow').style.display = 'none';
+      } else {
+        passwordMsg.textContent = 'Incorrect code. Please try again.';
+      }
+    }catch(err){
+      passwordMsg.textContent = 'Something went wrong — please try again.';
+    }
+  });
+
+  /* ===== NEWSLETTER MODAL (15s after entering) ===== */
+  function startTimedPrompts(){
+    const newsletterOverlay = document.getElementById('newsletterOverlay');
+    let newsletterDismissed = false;
+    setTimeout(() => {
+      if(!newsletterDismissed) newsletterOverlay.classList.add('open');
+    }, 15000);
+
+    function closeNewsletter(){ newsletterOverlay.classList.remove('open'); newsletterDismissed = true; }
+    document.getElementById('newsletterClose').addEventListener('click', closeNewsletter);
+    document.getElementById('newsletterDecline').addEventListener('click', closeNewsletter);
+    newsletterOverlay.addEventListener('click', (e) => { if(e.target === newsletterOverlay) closeNewsletter(); });
+
+    document.getElementById('newsletterForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const msg = document.getElementById('newsletterMsg');
+      const emailInput = document.getElementById('newsletterEmail');
+      msg.textContent = 'Joining…';
+      try{
+        const res = await fetch('/api/newsletter', {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({email: emailInput.value})
+        });
+        if(!res.ok) throw new Error('failed');
+        msg.textContent = "You're on the list. Welcome.";
+        document.getElementById('newsletterForm').style.display = 'none';
+        setTimeout(closeNewsletter, 1800);
+      }catch(err){
+        msg.textContent = "Something went wrong — please try again in a moment.";
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>
